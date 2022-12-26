@@ -1,5 +1,6 @@
 import { Routes } from "@angular/router";
 import { DashboardComponent } from "./components/dashboard/dashboard.component";
+import { FeedbackListComponent } from "./components/feedback-list/feedback-list.component";
 import { FeedbackComponent } from "./components/feedback/feedback.component";
 import { ForgotPasswordComponent } from "./components/forgot-password/forgot-password.component";
 import { LoginComponent } from "./components/login/login.component";
@@ -11,9 +12,10 @@ export const routes: Routes = [
     { path: 'login', component: LoginComponent },
     { path: 'signup', component: SignupComponent },
     { path: 'forgot-password', component: ForgotPasswordComponent },
-    { path: 'feedback', component: FeedbackComponent },
     { path: 'dashboard', component: DashboardComponent },
     { path: 'wizard', component: WizardComponent },
+    { path: 'feedback', component: FeedbackComponent },
+    { path: 'feedback/list', component: FeedbackListComponent },
     { path: 'feedback/thanks', component: ThanksComponent },
     { path: '**', redirectTo: 'dashboard' },
 ];
