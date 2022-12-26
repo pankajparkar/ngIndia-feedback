@@ -4,6 +4,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'cf-login',
@@ -14,28 +15,23 @@ import { MatButtonModule } from '@angular/material/button';
     MatSelectModule,
     MatCardModule,
     MatButtonModule,
+    FormsModule,
   ],
   template: `
     <mat-card class="login-card">
       <mat-card-title>
         Login Form
       </mat-card-title>
-      <form>
+      <form name="loginForm">
         <mat-form-field appearance="fill">
-          <mat-label>Input</mat-label>
-          <input matInput>
+          <mat-label>Username</mat-label>
+          <input matInput type="text" name="username" [(ngModel)]="user.name" required>
         </mat-form-field>
         <mat-form-field appearance="fill">
-          <mat-label>Select</mat-label>
-          <mat-select>
-            <mat-option value="one">First option</mat-option>
-            <mat-option value="two">Second option</mat-option>
-          </mat-select>
+          <mat-label>Password</mat-label>
+          <input matInput type="password" [(ngModel)]="user.password" required>
         </mat-form-field>
-        <mat-form-field appearance="fill">
-          <mat-label>Textarea</mat-label>
-          <textarea matInput></textarea>
-        </mat-form-field>
+
         <button type="submit" mat-raised-button color="primary">
           Submit
         </button>
@@ -64,5 +60,5 @@ import { MatButtonModule } from '@angular/material/button';
   ]
 })
 export class LoginComponent {
-
+  user = { name: '', password: '', };
 }
