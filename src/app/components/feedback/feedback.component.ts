@@ -5,7 +5,7 @@ import { QuestionComponent } from '../question/question.component';
 import { NgIf, NgSwitch, NgSwitchCase, NgSwitchDefault } from '@angular/common';
 import { WelcomeComponent } from '../welcome/welcome.component';
 import { ThanksComponent } from '../thanks/thanks.component';
-import { ActivatedRoute, RouterLink } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'cf-feedback',
@@ -97,5 +97,11 @@ export class FeedbackComponent {
   isFirstStep = this.id === 1;
   isLastStep = this.id === this.steps.length;
   isQuestion = !this.isFirstStep && !this.isLastStep;
-  step = this.steps[this.id];
+  step = this.steps[this.id - 1];
+
+  router = inject(Router);
+
+  ngOnInit(): void {
+    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+  }
 }

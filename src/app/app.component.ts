@@ -30,9 +30,4 @@ import { NavbarComponent } from './common/navbar/navbar.component';
   ]
 })
 export class AppComponent {
-  router = inject(Router);
-
-  ngOnInit(): void {
-    // this.router.routeReuseStrategy.shouldReuseRoute = () => false;
-  }
 }
