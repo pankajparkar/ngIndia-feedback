@@ -6,6 +6,7 @@ import { NgIf, NgSwitch, NgSwitchCase, NgSwitchDefault } from '@angular/common';
 import { WelcomeComponent } from '../welcome/welcome.component';
 import { ThanksComponent } from '../thanks/thanks.component';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
+import { steps } from 'src/app/steps';
 
 @Component({
   selector: 'cf-feedback',
@@ -70,28 +71,7 @@ import { ActivatedRoute, Router, RouterLink } from '@angular/router';
   ]
 })
 export class FeedbackComponent {
-  steps = [{
-    stepTitle: 'Step Title',
-    stepSubtitle: 'Step Subtitle',
-    cardTitle: 'Card Title',
-    cardSubtitle: 'Card Subtitle',
-    type: 'start',
-    questionId: 1,
-  }, {
-    stepTitle: 'Step Title',
-    stepSubtitle: 'Step Subtitle',
-    cardTitle: 'Card Title',
-    cardSubtitle: 'Card Subtitle',
-    type: 'start',
-    questionId: 1,
-  }, {
-    stepTitle: 'Step Title',
-    stepSubtitle: 'Step Subtitle',
-    cardTitle: 'Card Title',
-    cardSubtitle: 'Card Subtitle',
-    type: 'start',
-    questionId: 1,
-  }];
+  steps = steps;
   route = inject(ActivatedRoute);
   id = +(this.route.snapshot.params['id'] ?? 1);
   isFirstStep = this.id === 1;
