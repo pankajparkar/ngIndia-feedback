@@ -11,28 +11,40 @@ import { MatButtonModule } from '@angular/material/button';
     MatButtonModule,
   ],
   template: `
-    <mat-card>
-      <mat-card-title>
-        {{ step.title }}
-      </mat-card-title>
-      <mat-card-content>
-        My Content
-      </mat-card-content>
-      <mat-card-footer>
-        <button mat-raised-button type="button" color="primary">
-          Start
-        </button>
-        <button mat-raised-button type="button" color="primary">
-          Prev
-        </button>
-        <button mat-raised-button type="button" color="primary">
-          Next
-        </button>
-        <button mat-raised-button type="button" color="primary">
-          End
-        </button>
-      </mat-card-footer>
-    </mat-card>
+    <div class="step-container">
+      <div class="step-title">
+        {{ step.stepTitle }}
+      </div>
+      <div class="step-subtitle">
+        {{ step.stepSubtitle }}
+      </div>
+      <mat-card>
+        <mat-card-title>
+          {{ step.cardTitle }}
+        </mat-card-title>
+        <mat-card-subtitle>
+          {{ step.cardSubtitle }}
+        </mat-card-subtitle>
+        <mat-card-content>
+          My Content
+        </mat-card-content>
+        <mat-card-footer>
+          <button mat-raised-button type="button" color="primary">
+            Start
+          </button>
+          <button mat-raised-button type="button" color="primary">
+            Prev
+          </button>
+          <button mat-raised-button type="button" color="primary">
+            Next
+          </button>
+          <button mat-raised-button type="button" color="primary">
+            End
+          </button>
+        </mat-card-footer>
+      </mat-card>
+    </div>
+
   `,
   styles: [
     `
@@ -43,7 +55,16 @@ import { MatButtonModule } from '@angular/material/button';
       display: flex;
       justify-content: center;
 
+      .step-title {
+        font-size: 32px;
+      }
+
+      .step-subtitle {
+        font-size: 16px;
+      }
+
       mat-card {
+        height: 500px;
         width: 400px;
       }
     }
@@ -52,7 +73,10 @@ import { MatButtonModule } from '@angular/material/button';
 })
 export class FeedbackComponent {
   step = {
-    title: 'Step Title',
+    stepTitle: 'Step Title',
+    stepSubtitle: 'Step Subtitle',
+    cardTitle: 'Card Title',
+    cardSubtitle: 'Card Subtitle',
     type: 'start',
     questionId: 1,
   }
