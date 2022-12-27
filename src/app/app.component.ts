@@ -8,14 +8,26 @@ import { NavbarComponent } from './common/navbar/navbar.component';
   standalone: true,
   template: `
     <cf-navbar></cf-navbar>
-    <router-outlet></router-outlet>
+    <div class="content">
+      <router-outlet></router-outlet>
+    </div>
     <cf-footer></cf-footer>
   `,
   imports: [
     NavbarComponent,
     RouterOutlet,
-    FooterComponent
+    FooterComponent,
   ],
+  styles: [
+    `
+    .content {
+      align-items: center;
+      display: flex;
+      height: calc(100vh - 128px);
+      justify-content: center;
+    }
+    `
+  ]
 })
 export class AppComponent {
 }

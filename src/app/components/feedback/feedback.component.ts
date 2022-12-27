@@ -39,6 +39,14 @@ import { MatButtonModule } from '@angular/material/button';
     button {
       margin: 0 5px;
     }
+    :host {
+      display: flex;
+      justify-content: center;
+
+      mat-card {
+        width: 400px;
+      }
+    }
     `
   ]
 })
