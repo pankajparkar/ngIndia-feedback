@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
+import { QuestionComponent } from '../question/question.component';
 
 @Component({
   selector: 'cf-feedback',
@@ -9,6 +9,7 @@ import { MatButtonModule } from '@angular/material/button';
   imports: [
     MatCardModule,
     MatButtonModule,
+    QuestionComponent,
   ],
   template: `
     <div class="step-container">
@@ -18,39 +19,12 @@ import { MatButtonModule } from '@angular/material/button';
       <div class="step-subtitle">
         {{ step.stepSubtitle }}
       </div>
-      <mat-card>
-        <mat-card-title>
-          {{ step.cardTitle }}
-        </mat-card-title>
-        <mat-card-subtitle>
-          {{ step.cardSubtitle }}
-        </mat-card-subtitle>
-        <mat-card-content>
-          My Content
-        </mat-card-content>
-        <mat-card-footer>
-          <button mat-raised-button type="button" color="primary">
-            Start
-          </button>
-          <button mat-raised-button type="button" color="primary">
-            Prev
-          </button>
-          <button mat-raised-button type="button" color="primary">
-            Next
-          </button>
-          <button mat-raised-button type="button" color="primary">
-            End
-          </button>
-        </mat-card-footer>
-      </mat-card>
+      <cf-question></cf-question>
     </div>
 
   `,
   styles: [
     `
-    button {
-      margin: 0 5px;
-    }
     :host {
       display: flex;
       justify-content: center;
@@ -61,11 +35,6 @@ import { MatButtonModule } from '@angular/material/button';
 
       .step-subtitle {
         font-size: 16px;
-      }
-
-      mat-card {
-        height: 500px;
-        width: 400px;
       }
     }
     `
@@ -79,5 +48,5 @@ export class FeedbackComponent {
     cardSubtitle: 'Card Subtitle',
     type: 'start',
     questionId: 1,
-  }
+  };
 }
