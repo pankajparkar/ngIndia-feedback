@@ -2,10 +2,10 @@ import { Component, inject } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { QuestionComponent } from '../question/question.component';
-import { NgSwitch, NgSwitchCase, NgSwitchDefault } from '@angular/common';
+import { NgIf, NgSwitch, NgSwitchCase, NgSwitchDefault } from '@angular/common';
 import { WelcomeComponent } from '../welcome/welcome.component';
 import { ThanksComponent } from '../thanks/thanks.component';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'cf-feedback',
@@ -17,6 +17,8 @@ import { ActivatedRoute } from '@angular/router';
     NgSwitchCase,
     NgSwitchDefault,
     NgSwitch,
+    NgIf,
+    RouterLink,
     WelcomeComponent,
     ThanksComponent,
   ],
@@ -28,18 +30,25 @@ import { ActivatedRoute } from '@angular/router';
       <div class="step-subtitle">
         {{ step.stepSubtitle }}
       </div>
-      <ng-container *ngSwitch="step.type">
-        <ng-container *ngSwitchCase="'welcome'">
+      <ng-container [ngSwitch]="id">
+        <ng-container *ngSwitchCase="1">
           <cf-welcome></cf-welcome>
         </ng-container>
-        <ng-container *ngSwitchCase="'welcome'">
+        <ng-container *ngSwitchCase="steps.length">
           <cf-thanks></cf-thanks>
         </ng-container>
         <ng-container *ngSwitchDefault>
           <cf-question></cf-question>
         </ng-container>
       </ng-container>
-      <cf-question></cf-question>
+      <div class="step-footer">
+        <button mat-raised-button type="button" color="primary" *ngIf="!isFirstStep" [routerLink]="['/feedback', id - 1]">
+          Prev
+        </button>
+        <button mat-raised-button type="button" color="primary" *ngIf="!isLastStep" [routerLink]="['/feedback', id + 1]">
+          Next
+        </button>
+      </div>
     </div>
 
   `,

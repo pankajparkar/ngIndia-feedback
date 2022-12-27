@@ -22,16 +22,7 @@ import { MatCardModule } from '@angular/material/card';
       </mat-card-content>
       <mat-card-footer>
         <button mat-raised-button type="button" color="primary">
-          Start
-        </button>
-        <button mat-raised-button type="button" color="primary">
-          Prev
-        </button>
-        <button mat-raised-button type="button" color="primary">
-          Next
-        </button>
-        <button mat-raised-button type="button" color="primary">
-          End
+          Submit
         </button>
       </mat-card-footer>
     </mat-card>

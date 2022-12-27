@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Component, inject } from '@angular/core';
+import { Router, RouterOutlet } from '@angular/router';
 import { FooterComponent } from './common/footer/footer.component';
 import { NavbarComponent } from './common/navbar/navbar.component';
 
@@ -30,4 +30,9 @@ import { NavbarComponent } from './common/navbar/navbar.component';
   ]
 })
 export class AppComponent {
+  router = inject(Router);
+
+  ngOnInit(): void {
+    // this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+  }
 }
