@@ -84,4 +84,8 @@ export class FeedbackComponent {
   ngOnInit(): void {
     this.router.routeReuseStrategy.shouldReuseRoute = () => false;
   }
+
+  canExit() {
+    return true;
+  }
 }

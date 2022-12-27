@@ -34,6 +34,7 @@ import { MatCardModule } from '@angular/material/card';
     mat-card {
       height: 500px;
       width: 400px;
+      margin: 24px 0;
     }
   `]
 })

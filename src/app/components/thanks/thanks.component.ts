@@ -10,8 +10,11 @@ import { CommonModule } from '@angular/common';
       thanks works!
     </p>
   `,
-  styles: [
-  ]
+  styles: [`
+    mat-card {
+      margin: 24px 0;
+    }
+  `]
 })
 export class ThanksComponent {
 
