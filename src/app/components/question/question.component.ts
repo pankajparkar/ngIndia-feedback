@@ -24,11 +24,6 @@ import { StarRatingComponent } from '../star-rating/star-rating.component';
       <mat-card-content>
         <cf-star-rating [rating]="1" [starCount]="5"></cf-star-rating>
       </mat-card-content>
-      <!-- <mat-card-footer>
-        <button mat-raised-button type="button" color="primary">
-          Submit
-        </button>
-      </mat-card-footer> -->
     </mat-card>
   `,
   styles: [`

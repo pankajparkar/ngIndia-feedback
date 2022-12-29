@@ -1,6 +1,5 @@
-import { Component, EventEmitter, inject, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { NgForOf, NgIf } from '@angular/common';
-import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -16,7 +15,6 @@ export enum StarRatingColor {
   selector: 'cf-star-rating',
   standalone: true,
   imports: [
-    MatSnackBarModule,
     MatIconModule,
     NgForOf,
     MatButtonModule,
@@ -59,7 +57,6 @@ export class StarRatingComponent {
   @Input() color: string = 'accent';
   @Output() ratingUpdated = new EventEmitter();
 
-  snackBar = inject(MatSnackBar);
   ratingArr: number[] = [];
   private _starCount: number = 5;
 
