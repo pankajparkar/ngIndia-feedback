@@ -9,7 +9,6 @@ import { StarRatingComponent } from './components/star-rating/star-rating.compon
   standalone: true,
   template: `
     <cf-navbar></cf-navbar>
-    <cf-star-rating [rating]="1" [starCount]="5"></cf-star-rating>
     <div class="content">
       <router-outlet></router-outlet>
     </div>
@@ -26,7 +25,7 @@ import { StarRatingComponent } from './components/star-rating/star-rating.compon
     .content {
       align-items: center;
       display: flex;
-      height: calc(100vh - 128px);
+      height: calc(100% - 128px);
       justify-content: center;
     }
     `
