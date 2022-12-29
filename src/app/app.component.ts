@@ -22,6 +22,9 @@ import { StarRatingComponent } from './components/star-rating/star-rating.compon
   ],
   styles: [
     `
+    .content:has(cf-question) {
+      display: block;
+    }
     .content {
       align-items: center;
       display: flex;

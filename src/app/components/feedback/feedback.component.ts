@@ -62,14 +62,16 @@ import { steps } from 'src/app/steps';
     :host {
       display: flex;
       justify-content: center;
+      padding-bottom: 75px;
+    }
 
-      .step-title {
-        font-size: 32px;
-      }
+    .step-title {
+      font-size: 32px;
+      line-height: 40px;
+    }
 
-      .step-subtitle {
-        font-size: 16px;
-      }
+    .step-subtitle {
+      font-size: 16px;
     }
     `
   ]
