@@ -6,13 +6,13 @@ import { CommonModule } from '@angular/common';
   standalone: true,
   imports: [CommonModule],
   template: `
-    <p>
-      thanks works!
-    </p>
+    <p>🙏</p>
   `,
   styles: [`
-    mat-card {
-      margin: 24px 0;
+    p {
+      font-size: 128px;
+      line-height: 150px;
+      text-align: center;
     }
   `]
 })
