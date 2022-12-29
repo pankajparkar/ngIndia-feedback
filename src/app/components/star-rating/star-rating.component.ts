@@ -25,16 +25,20 @@ export enum StarRatingColor {
     NgIf,
   ],
   template: `
-    <button mat-icon-button [color]="color" *ngFor="let ratingId of ratingArr;index as i" [id]="'star_'+i" (click)="onClick(i+1)" [matTooltip]="ratingId+1+''" matTooltipPosition="above">
-      <mat-icon>
-        {{showIcon(i)}}
-      </mat-icon>
-    </button>
+    <ng-container *ngFor="let ratingId of ratingArr; index as i">
+      <button mat-icon-button [color]="color" [id]="'star_'+i" (click)="ratingUpdated.emit(i+1)" [matTooltip]="ratingId+1+''" matTooltipPosition="above">
+        <mat-icon>
+          {{showIcon(i)}}
+        </mat-icon>
+      </button>
+    </ng-container>
     <mat-error *ngIf="starCount == null || starCount == 0">
       Star count is <strong>required</strong> and cannot be zero
     </mat-error>
     <p class="body-2">
-        Your rated <span class="body-2">{{rating}}</span> / <span class="body-2">{{starCount}}</span>
+        Your rated
+        <span class="body-2">{{rating}}</span> /
+        <span class="body-2">{{starCount}}</span>
     </p>
   `,
   styles: [
@@ -45,10 +49,9 @@ export class StarRatingComponent implements OnInit {
   @Input('rating') rating: number = 3;
   @Input('starCount') starCount: number = 5;
   @Input('color') color: string = 'accent';
-  @Output() private ratingUpdated = new EventEmitter();
+  @Output() ratingUpdated = new EventEmitter();
 
   snackBar = inject(MatSnackBar);
-  private snackBarDuration: number = 2000;
   ratingArr: number[] = [];
 
   ngOnInit() {
@@ -56,15 +59,6 @@ export class StarRatingComponent implements OnInit {
     for (let index = 0; index < this.starCount; index++) {
       this.ratingArr.push(index);
     }
-  }
-
-  onClick(rating: number) {
-    console.log(rating)
-    this.snackBar.open('You rated ' + rating + ' / ' + this.starCount, '', {
-      duration: this.snackBarDuration
-    });
-    this.ratingUpdated.emit(rating);
-    return false;
   }
 
   showIcon(index: number) {
