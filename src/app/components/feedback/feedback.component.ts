@@ -2,7 +2,7 @@ import { Component, inject } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { QuestionComponent } from '../question/question.component';
-import { NgIf, NgSwitch, NgSwitchCase, NgSwitchDefault } from '@angular/common';
+import { NgForOf, NgIf, NgSwitch, NgSwitchCase, NgSwitchDefault } from '@angular/common';
 import { WelcomeComponent } from '../welcome/welcome.component';
 import { ThanksComponent } from '../thanks/thanks.component';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
@@ -22,6 +22,7 @@ import { steps } from 'src/app/steps';
     RouterLink,
     WelcomeComponent,
     ThanksComponent,
+    NgForOf,
   ],
   template: `
     <div class="step-container">
@@ -39,7 +40,10 @@ import { steps } from 'src/app/steps';
           <cf-thanks></cf-thanks>
         </ng-container>
         <ng-container *ngSwitchDefault>
-          <cf-question></cf-question>
+          <ng-container *ngFor="let question of step.questions">
+            <cf-question [question]="question">
+            </cf-question>
+          </ng-container>
         </ng-container>
       </ng-container>
       <div class="step-footer">

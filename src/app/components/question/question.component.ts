@@ -1,6 +1,8 @@
-import { Component } from '@angular/core';
+import { NgForOf } from '@angular/common';
+import { Component, Input } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
+import { StarRatingComponent } from '../star-rating/star-rating.component';
 
 @Component({
   selector: 'cf-question',
@@ -8,23 +10,25 @@ import { MatCardModule } from '@angular/material/card';
   imports: [
     MatCardModule,
     MatButtonModule,
+    NgForOf,
+    StarRatingComponent
   ],
   template: `
     <mat-card>
       <mat-card-title>
-        {{ step.cardTitle }}
+        {{ question.title }}
       </mat-card-title>
       <mat-card-subtitle>
-        {{ step.cardSubtitle }}
+        {{ question.subtitle }}
       </mat-card-subtitle>
       <mat-card-content>
-        {{step.stepContent}}
+        <cf-star-rating [rating]="1" [starCount]="5"></cf-star-rating>
       </mat-card-content>
-      <mat-card-footer>
+      <!-- <mat-card-footer>
         <button mat-raised-button type="button" color="primary">
           Submit
         </button>
-      </mat-card-footer>
+      </mat-card-footer> -->
     </mat-card>
   `,
   styles: [`
@@ -32,7 +36,7 @@ import { MatCardModule } from '@angular/material/card';
       margin: 0 5px;
     }
     mat-card {
-      height: 500px;
+      max-height: 500px;
       width: 400px;
       margin: 24px 0;
     }
@@ -44,4 +48,6 @@ export class QuestionComponent {
     cardSubtitle: 'Card Subtitle',
     stepContent: 'Step Content',
   };
+
+  @Input() question: any;
 }
