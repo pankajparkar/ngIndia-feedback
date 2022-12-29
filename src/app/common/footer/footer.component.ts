@@ -16,14 +16,14 @@ import { MatButtonModule } from '@angular/material/button';
     <footer>
       <mat-toolbar color="primary">
         <mat-toolbar-row>
-          <span>Second Line</span>
+          <span>NgIndia by &lt;geek97/&gt;</span>
           <span class="example-spacer"></span>
-          <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+          <!-- <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
             <mat-icon>favorite</mat-icon>
           </button>
           <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
             <mat-icon>share</mat-icon>
-          </button>
+          </button> -->
         </mat-toolbar-row>
       </mat-toolbar>
     </footer>
