@@ -1,4 +1,4 @@
-const questions = [{
+export const questions = [{
     title: 'Talk 1',
     subtitle: 'by Stanemira',
 }, {
@@ -15,17 +15,22 @@ const questions = [{
     subtitle: 'by PQR',
 }];
 
-export const steps = [{
-    stepTitle: 'Welcome',
-    stepSubtitle: 'Please share your feedback',
-    cardTitle: 'Please enter your details',
-    cardSubtitle: 'This feedback will be ananymous',
-}, {
-    stepTitle: 'Feedback for Talks',
-    questions,
-}, {
-    stepTitle: 'Thanks for your feedback',
-    stepSubtitle: 'Step Subtitle',
-    cardTitle: 'Card Title',
-    cardSubtitle: 'Card Subtitle',
-}];
+export const steps = {
+    start: {
+        stepTitle: 'Welcome',
+        stepSubtitle: 'Please share your feedback',
+        cardTitle: 'Please enter your details',
+        cardSubtitle: 'This feedback will be ananymous',
+    },
+    questions: {
+        stepTitle: 'Feedback for Talks',
+        stepSubtitle: '',
+        questions,
+    },
+    thanks: {
+        stepTitle: 'Thanks for your feedback',
+        stepSubtitle: '',
+        cardTitle: 'Card Title',
+        cardSubtitle: 'Card Subtitle',
+    }
+};

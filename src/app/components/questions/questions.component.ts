@@ -1,18 +1,23 @@
 import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { NgForOf } from '@angular/common';
+import { QuestionComponent } from '../question/question.component';
+import { questions } from 'src/app/steps';
 
 @Component({
   selector: 'cf-questions',
   standalone: true,
-  imports: [CommonModule],
+  imports: [
+    NgForOf,
+    QuestionComponent,
+  ],
   template: `
-    <p>
-      questions works!
-    </p>
+    <ng-container *ngFor="let question of questions">
+      <cf-question></cf-question>
+    </ng-container>
   `,
   styles: [
   ]
 })
 export class QuestionsComponent {
-
+  questions: any[] = questions;
 }

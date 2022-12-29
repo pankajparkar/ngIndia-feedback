@@ -5,7 +5,7 @@ import { QuestionComponent } from '../question/question.component';
 import { NgForOf, NgIf, NgSwitch, NgSwitchCase, NgSwitchDefault } from '@angular/common';
 import { WelcomeComponent } from '../welcome/welcome.component';
 import { ThanksComponent } from '../thanks/thanks.component';
-import { ActivatedRoute, Router, RouterLink } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink, RouterOutlet } from '@angular/router';
 import { steps } from 'src/app/steps';
 
 @Component({
@@ -20,6 +20,7 @@ import { steps } from 'src/app/steps';
     NgSwitch,
     NgIf,
     RouterLink,
+    RouterOutlet,
     WelcomeComponent,
     ThanksComponent,
     NgForOf,
@@ -32,30 +33,8 @@ import { steps } from 'src/app/steps';
       <div class="step-subtitle">
         {{ step.stepSubtitle }}
       </div>
-      <ng-container [ngSwitch]="id">
-        <ng-container *ngSwitchCase="1">
-          <cf-welcome></cf-welcome>
-        </ng-container>
-        <ng-container *ngSwitchCase="steps.length">
-          <cf-thanks></cf-thanks>
-        </ng-container>
-        <ng-container *ngSwitchDefault>
-          <ng-container *ngFor="let question of step.questions">
-            <cf-question [question]="question">
-            </cf-question>
-          </ng-container>
-        </ng-container>
-      </ng-container>
-      <div class="step-footer">
-        <button mat-raised-button type="button" color="primary" *ngIf="!isFirstStep" [routerLink]="['/feedback', id - 1]">
-          Prev
-        </button>
-        <button mat-raised-button type="button" color="primary" *ngIf="!isLastStep" [routerLink]="['/feedback', id + 1]">
-          Next
-        </button>
-      </div>
+      <router-outlet></router-outlet>
     </div>
-
   `,
   styles: [
     `
@@ -77,15 +56,12 @@ import { steps } from 'src/app/steps';
   ]
 })
 export class FeedbackComponent {
-  steps = steps;
   route = inject(ActivatedRoute);
-  id = +(this.route.snapshot.params['id'] ?? 1);
-  isFirstStep = this.id === 1;
-  isLastStep = this.id === this.steps.length;
-  isQuestion = !this.isFirstStep && !this.isLastStep;
-  step = this.steps[this.id - 1];
-
   router = inject(Router);
+  steps = steps;
+  urlTree = this.router.url.split('/');
+  id = this.urlTree[this.urlTree.length - 1];
+  step = this.steps[this.id as 'start' | 'thanks' | 'questions'];
 
   ngOnInit(): void {
     this.router.routeReuseStrategy.shouldReuseRoute = () => false;
