@@ -32,9 +32,9 @@ export enum StarRatingColor {
         </mat-icon>
       </button>
     </ng-container>
-    <mat-error *ngIf="starCount == null || starCount == 0">
+    <!-- <mat-error *ngIf="!starCount">
       Star count is <strong>required</strong> and cannot be zero
-    </mat-error>
+    </mat-error> -->
     <p class="body-2">
         Your rated
         <span class="body-2">{{rating}}</span> /
@@ -44,22 +44,24 @@ export enum StarRatingColor {
   styles: [
   ]
 })
-export class StarRatingComponent implements OnInit {
+export class StarRatingComponent {
 
-  @Input('rating') rating: number = 3;
-  @Input('starCount') starCount: number = 5;
-  @Input('color') color: string = 'accent';
-  @Output() ratingUpdated = new EventEmitter();
-
-  snackBar = inject(MatSnackBar);
-  ratingArr: number[] = [];
-
-  ngOnInit() {
-    console.log("a " + this.starCount)
+  @Input() rating: number = 3;
+  @Input() get starCount() {
+    return this._starCount;
+  }
+  set starCount(value: number) {
+    this._starCount = value ?? 5;
     for (let index = 0; index < this.starCount; index++) {
       this.ratingArr.push(index);
     }
   }
+  @Input() color: string = 'accent';
+  @Output() ratingUpdated = new EventEmitter();
+
+  snackBar = inject(MatSnackBar);
+  ratingArr: number[] = [];
+  private _starCount: number = 5;
 
   showIcon(index: number) {
     if (this.rating >= index + 1) {
