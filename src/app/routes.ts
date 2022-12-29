@@ -1,4 +1,3 @@
-import { inject } from "@angular/core";
 import { Routes } from "@angular/router";
 import { DashboardComponent } from "./components/dashboard/dashboard.component";
 import { FeedbackListComponent } from "./components/feedback-list/feedback-list.component";
@@ -14,12 +13,21 @@ export const routes: Routes = [
     { path: 'forgot-password', component: ForgotPasswordComponent },
     { path: 'dashboard', component: DashboardComponent },
     {
-        path: 'feedback/:id', component: FeedbackComponent, canDeactivate: [
-            (cmp: FeedbackComponent) => {
-                // const cmp = inject(FeedbackComponent);
-                return cmp.canExit();
+        path: 'feedback', children: [
+            {
+                path: ':id',
+                component: FeedbackComponent, canDeactivate: [
+                    (cmp: FeedbackComponent) => {
+                        // const cmp = inject(FeedbackComponent);
+                        return cmp.canExit();
+                    }
+                ],
+            },
+            {
+                path: '**',
+                redirectTo: '1'
             }
-        ]
+        ],
     },
     { path: 'feedback/list', component: FeedbackListComponent },
     { path: 'feedback/thanks', component: ThanksComponent },
