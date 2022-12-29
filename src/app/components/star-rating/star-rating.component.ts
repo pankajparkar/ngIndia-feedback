@@ -1,5 +1,5 @@
 import { Component, EventEmitter, inject, Input, OnInit, Output } from '@angular/core';
-import { CommonModule, NgForOf } from '@angular/common';
+import { NgForOf, NgIf } from '@angular/common';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
@@ -22,6 +22,7 @@ export enum StarRatingColor {
     MatButtonModule,
     MatFormFieldModule,
     MatTooltipModule,
+    NgIf,
   ],
   template: `
     <button mat-icon-button [color]="color" *ngFor="let ratingId of ratingArr;index as i" [id]="'star_'+i" (click)="onClick(i+1)" [matTooltip]="ratingId+1+''" matTooltipPosition="above">
