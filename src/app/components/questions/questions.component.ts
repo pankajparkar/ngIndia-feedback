@@ -12,7 +12,7 @@ import { questions } from 'src/app/steps';
   ],
   template: `
     <ng-container *ngFor="let question of questions">
-      <cf-question></cf-question>
+      <cf-question [question]="question"></cf-question>
     </ng-container>
   `,
   styles: [
