@@ -59,7 +59,7 @@ export class FeedbackComponent {
   route = inject(ActivatedRoute);
   router = inject(Router);
   steps = steps;
-  urlTree = this.router.url.split('/');
+  urlTree = location.pathname.split('/');
   id = this.urlTree[this.urlTree.length - 1];
   step = this.steps[this.id as 'start' | 'thanks' | 'questions'];
 
